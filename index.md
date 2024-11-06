@@ -1,40 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/driver.js/0.9.8/driver.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/driver.js/0.9.8/driver.min.js"></script>
+  <title>My GitHub Pages with Driver.js</title>
+</head>
+<body>
+
 # Welcome to My GitHub Page
 
-<!-- Add Shepherd.js CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@8.1.0/dist/css/shepherd.css">
+This page includes a tutorial using Driver.js.
 
-<!-- Page Content -->
-<h1 id="welcome">Welcome to My Page</h1>
-<p id="description">This page is about...</p>
+<button id="start-tour">Start Tour</button>
 
-<!-- Add Shepherd.js JavaScript and tour script -->
-<script src="https://cdn.jsdelivr.net/npm/shepherd.js@8.1.0/dist/js/shepherd.min.js"></script>
+<div id="element1">
+  <p>This is the first element in the tutorial.</p>
+</div>
+
+<div id="element2">
+  <p>This is the second element in the tutorial.</p>
+</div>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const tour = new Shepherd.Tour({
-      defaultStepOptions: {
-        cancelIcon: { enabled: true },
-        scrollTo: { behavior: 'smooth', block: 'center' }
+  document.getElementById('start-tour').addEventListener('click', function() {
+    const driver = new Driver();
+    driver.defineSteps([
+      {
+        element: '#element1',
+        popover: {
+          title: 'Step 1',
+          description: 'This is the first step.',
+        }
+      },
+      {
+        element: '#element2',
+        popover: {
+          title: 'Step 2',
+          description: 'This is the second step.',
+        }
       }
-    });
-
-    tour.addStep({
-      id: 'welcome-step',
-      text: 'Welcome to the page!',
-      attachTo: { element: '#welcome', on: 'bottom' },
-      buttons: [{ text: 'Next', action: tour.next }]
-    });
-
-    tour.addStep({
-      id: 'description-step',
-      text: 'Here is what this page is about.',
-      attachTo: { element: '#description', on: 'right' },
-      buttons: [
-        { text: 'Back', action: tour.back },
-        { text: 'Finish', action: tour.complete }
-      ]
-    });
-
-    tour.start();
+    ]);
+    driver.start();
   });
 </script>
+
+</body>
+</html>

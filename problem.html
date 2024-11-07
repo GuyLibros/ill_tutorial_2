@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver.js Tour Example</title>
+  <!-- Link to Driver.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+  <!-- Link to Driver.js JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
+</head>
+<body>
+
+  <!-- Page Content -->
+  <h1>Welcome to the Driver.js Tour Example</h1>
+  <p>This page demonstrates how to use Driver.js to create popovers for a guided tour.</p>
+  
+  <!-- Button to Start the Tour -->
+  <button id="start-tour">Start Tour</button>
+
+  <!-- Elements to Highlight in the Tour -->
+  <div id="element1" style="margin-top: 20px; padding: 10px; background-color: #e0f7fa;">
+    <p>This is the first element in the tutorial.</p>
+  </div>
+
+  <div id="element2" style="margin-top: 20px; padding: 10px; background-color: #ffe0b2;">
+    <p>This is the second element in the tutorial.</p>
+  </div>
+
+  <!-- JavaScript to Define and Start the Tour -->
+  <script>
+    // Ensure the script runs after the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      // Create a new instance of Driver
+      const driver = new Driver();
+
+      // Define the steps for the tour
+      driver.defineSteps([
+        {
+          element: '#element1',
+          popover: {
+            title: 'Step 1',
+            description: 'This is the first step in the tour.',
+            position: 'bottom'
+          }
+        },
+        {
+          element: '#element2',
+          popover: {
+            title: 'Step 2',
+            description: 'This is the second step in the tour.',
+            position: 'top'
+          }
+        }
+      ]);
+
+      // Start the tour when the button is clicked
+      document.getElementById('start-tour').addEventListener('click', function() {
+        driver.start();
+      });
+    });
+  </script>
+
+</body>
+</html>

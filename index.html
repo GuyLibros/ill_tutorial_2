@@ -25,13 +25,31 @@
   </div>
 
   <!-- JavaScript to initialize and start the Driver.js tour -->
-  <script>
-  document.getElementById('start-tour').addEventListener('click', function() {
-    alert("Button clicked!"); // This should show when the button is clicked
-    const driver = new Driver();
-    console.log("Driver initialized:", driver); // Check if Driver.js initializes correctly
-  });
-</script>
+  driver.defineSteps([
+  {
+    element: '#element1',
+    popover: {
+      title: 'Welcome',
+      description: 'Let’s start the tour here.'
+    }
+  },
+  {
+    element: '#element2',
+    popover: {
+      title: 'Next Step',
+      description: 'Learn more about this feature.',
+    }
+  }
+]);
+
+driver.on('nextStep', (element) => {
+  console.log('Proceeding to the next step:', element);
+});
+
+driver.on('complete', () => {
+  alert('Tour completed!');
+});
+
 
       
 

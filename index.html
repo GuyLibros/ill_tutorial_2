@@ -26,31 +26,34 @@
 
   <!-- JavaScript to initialize and start the Driver.js tour -->
  <script>
-   const driver = new Driver();
-   driver.defineSteps([
-  {
-    element: '#element1',
-    popover: {
-      title: 'Welcome',
-      description: 'Let’s start the tour here.'
-    }
-  },
-  {
-    element: '#element2',
-    popover: {
-      title: 'Next Step',
-      description: 'Learn more about this feature.',
-    }
-  }
-]);
+  // Ensure the script runs after the DOM is fully loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    // Create a new instance of Driver
+    const driver = new Driver();
 
-driver.on('nextStep', (element) => {
-  console.log('Proceeding to the next step:', element);
-});
+    // Define the steps for the tour
+    driver.defineSteps([
+      {
+        element: '#element1',
+        popover: {
+          title: 'Welcome',
+          description: 'Let’s start the tour here.'
+        }
+      },
+      {
+        element: '#element2',
+        popover: {
+          title: 'Next Step',
+          description: 'Learn more about this feature.'
+        }
+      }
+    ]);
 
-driver.on('complete', () => {
-  alert('Tour completed!');
-});
+    // Add event listener to start the tour on button click
+    document.getElementById('start-tour').addEventListener('click', function() {
+      driver.start(); // This starts the tour when the button is clicked
+    });
+  });
 </script>
 
       

@@ -25,7 +25,9 @@
   </div>
 
   <!-- JavaScript to initialize and start the Driver.js tour -->
- <script> driver.defineSteps([
+ <script>
+   const driver = new Driver();
+   driver.defineSteps([
   {
     element: '#element1',
     popover: {

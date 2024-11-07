@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver.js Tour Example</title>
+  <title>Driver.js Simple Highlight</title>
   <!-- Link to Driver.js CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
   <!-- Link to Driver.js JavaScript -->
@@ -12,54 +12,34 @@
 <body>
 
   <!-- Page Content -->
-  <h1>Welcome to the Driver.js Tour Example</h1>
-  <p>This page demonstrates how to use Driver.js to create popovers for a guided tour.</p>
+  <h1>Welcome to the Simple Highlight Example</h1>
+  <p>This example uses Driver.js to highlight a single element on the page.</p>
   
-  <!-- Button to Start the Tour -->
-  <button id="start-tour">Start Tour</button>
+  <!-- Button to Start the Highlight -->
+  <button id="highlight-button">Highlight Element</button>
 
-  <!-- Elements to Highlight in the Tour -->
-  <div id="element1" style="margin-top: 20px; padding: 10px; background-color: #e0f7fa;">
-    <p>This is the first element in the tutorial.</p>
+  <!-- Element to Highlight -->
+  <div id="highlight-element" style="margin-top: 20px; padding: 10px; background-color: #e0f7fa;">
+    <p>This element will be highlighted by Driver.js when you click the button.</p>
   </div>
 
-  <div id="element2" style="margin-top: 20px; padding: 10px; background-color: #ffe0b2;">
-    <p>This is the second element in the tutorial.</p>
-  </div>
-
-  <!-- JavaScript to Define and Start the Tour -->
+  <!-- JavaScript to Set Up and Start the Highlight -->
   <script>
     // Ensure the script runs after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function() {
-      console.log("DOM fully loaded and parsed."); // Debug line
-
       // Create a new instance of Driver
       const driver = new Driver();
 
-      // Define the steps for the tour
-      driver.defineSteps([
-        {
-          element: '#element1',
+      // Set up the highlight action when the button is clicked
+      document.getElementById('highlight-button').addEventListener('click', function() {
+        driver.highlight({
+          element: '#highlight-element', // The element to highlight
           popover: {
-            title: 'Step 1',
-            description: 'This is the first step in the tour.',
+            title: 'Highlighted Element',
+            description: 'This is the element being highlighted with Driver.js.',
             position: 'bottom'
           }
-        },
-        {
-          element: '#element2',
-          popover: {
-            title: 'Step 2',
-            description: 'This is the second step in the tour.',
-            position: 'top'
-          }
-        }
-      ]);
-
-      // Start the tour when the button is clicked
-      document.getElementById('start-tour').addEventListener('click', function() {
-        console.log("Starting tour..."); // Debug line
-        driver.start(); // This starts the tour
+        });
       });
     });
   </script>

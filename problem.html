@@ -31,6 +31,8 @@
   <script>
     // Ensure the script runs after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function() {
+      console.log("DOM fully loaded and parsed."); // Debug line
+
       // Create a new instance of Driver
       const driver = new Driver();
 
@@ -56,7 +58,8 @@
 
       // Start the tour when the button is clicked
       document.getElementById('start-tour').addEventListener('click', function() {
-        driver.start();
+        console.log("Starting tour..."); // Debug line
+        driver.start(); // This starts the tour
       });
     });
   </script>

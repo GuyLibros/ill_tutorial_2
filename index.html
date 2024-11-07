@@ -3,57 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
-<script>
-  import { driver } from "driver.js";
-import "driver.js/dist/driver.css";
-
-const driverObj = driver();
-driverObj.highlight({
-  element: '#some-element',
-  popover: {
-    title: 'Title for the Popover',
-    description: 'Description for it',
-  },
-});</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
   <title>My GitHub Pages with Driver.js</title>
+  
+  <!-- Include Driver.js CSS and JavaScript via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.0.1/dist/driver.js.iife.js"></script>
 </head>
 <body>
 
-This page includes a tutorial using Driver.js.
+  <p>This page includes a tutorial using Driver.js.</p>
 
-<button id="start-tour">Start Tour</button>
+  <!-- Button to start the tour -->
+  <button id="start-tour">Start Tour</button>
 
-<div id="element1">
-  <p>This is the first element in the tutorial.</p>
-</div>
+  <!-- Elements for Driver.js to highlight -->
+  <div id="element1">
+    <p>This is the first element in the tutorial.</p>
+  </div>
 
-<div id="element2">
-  <p>This is the second element in the tutorial.</p>
-</div>
+  <div id="element2">
+    <p>This is the second element in the tutorial.</p>
+  </div>
 
-<script>
-  document.getElementById('start-tour').addEventListener('click', function() {
-    const driver = new Driver();
-    driver.defineSteps([
-      {
-        element: '#element1',
-        popover: {
-          title: 'Step 1',
-          description: 'This is the first step.',
+  <!-- JavaScript to initialize and start the Driver.js tour -->
+  <script>
+    document.getElementById('start-tour').addEventListener('click', function() {
+      // Create a new instance of Driver.js
+      const driver = new Driver();
+
+      // Define the steps for the tour
+      driver.defineSteps([
+        {
+          element: '#element1',
+          popover: {
+            title: 'Step 1',
+            description: 'This is the first step.',
+          }
+        },
+        {
+          element: '#element2',
+          popover: {
+            title: 'Step 2',
+            description: 'This is the second step.',
+          }
         }
-      },
-      {
-        element: '#element2',
-        popover: {
-          title: 'Step 2',
-          description: 'This is the second step.',
-        }
-      }
-    ]);
-    driver.start();
-  });
-</script>
+      ]);
+
+      // Start the tour
+      driver.start();
+    });
+  </script>
 
 </body>
 </html>

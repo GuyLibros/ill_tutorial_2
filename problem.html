@@ -13,7 +13,7 @@
 
   <!-- Page Content -->
   <h1>Welcome to the Simple Highlight Example</h1>
-  <p>This example uses Driver.js to highlight a single element on the page.</p>
+  <p>This example uses Driver.js to highlight a single element on the page only when you click the button.</p>
   
   <!-- Button to Start the Highlight -->
   <button id="highlight-button">Highlight Element</button>
@@ -25,12 +25,11 @@
 
   <!-- JavaScript to Set Up and Start the Highlight -->
   <script>
-    // Ensure the script runs after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function() {
       // Create a new instance of Driver
       const driver = new Driver();
 
-      // Set up the highlight action when the button is clicked
+      // Set up the highlight action only when the button is clicked
       document.getElementById('highlight-button').addEventListener('click', function() {
         driver.highlight({
           element: '#highlight-element', // The element to highlight
